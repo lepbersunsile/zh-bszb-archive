@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bszb · 资料整理与信息索引</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(145deg, #fce9d8 0%, #f7d9c4 40%, #f1c7ae 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.5rem 1rem 3rem;
+            color: #2e241e;
+        }
+
+        .page-wrap {
+            max-width: 1100px;
+            width: 100%;
+            background: rgba(255, 251, 245, 0.65);
+            backdrop-filter: blur(3px);
+            border-radius: 48px 48px 32px 32px;
+            padding: 2rem 1.8rem 2.8rem;
+            box-shadow: 0 10px 30px rgba(120, 70, 40, 0.12);
+        }
+
+        /* 顶部导航 */
+        .top-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.2rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid rgba(180, 120, 80, 0.2);
+        }
+
+        .nav-brand {
+            font-weight: 600;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+            background: #f5e3d2;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            color: #5f3e2c;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #5f3e2c;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 0.3rem 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            border-bottom-color: #b7835c;
+            color: #3f281c;
+        }
+
+        /* hero 区 */
+        .hero {
+            margin: 1.5rem 0 2.8rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: #3f281c;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            max-width: 680px;
+            margin: 1rem auto 0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #4c3628;
+        }
+
+        .hero .inline-link {
+            background: #f1ddd0;
+            padding: 0.1rem 0.6rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            color: #4f3322;
+            transition: 0.2s;
+        }
+
+        .hero .inline-link:hover {
+            background: #e7cdbb;
+            color: #2d1f15;
+        }
+
+        /* 核心介绍 + 索引卡片 */
+        .intro-card {
+            background: #fffbf7;
+            border-radius: 32px;
+            padding: 2rem 2.2rem;
+            margin-bottom: 2.8rem;
+            box-shadow: 0 6px 18px rgba(130, 80, 45, 0.08);
+            transition: box-shadow 0.2s;
+        }
+
+        .intro-card h2 {
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: #4a3223;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .intro-card p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #3b2b20;
+            margin-bottom: 1rem;
+        }
+
+        .intro-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .intro-card .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 1rem;
+            margin-top: 1rem;
+        }
+
+        .tag-group span {
+            background: #f0e1d4;
+            padding: 0.2rem 1rem 0.3rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            color: #4f3828;
+        }
+
+        /* 三个场景模块（卡片网格） */
+        .scenes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+            margin: 2.2rem 0 2.6rem;
+        }
+
+        .scene-card {
+            background: #fffbf7;
+            border-radius: 28px;
+            padding: 1.8rem 1.4rem 1.8rem;
+            box-shadow: 0 4px 14px rgba(110, 65, 35, 0.06);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .scene-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 22px rgba(120, 75, 40, 0.1);
+        }
+
+        .scene-card .emoji-label {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .scene-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #3f2a1c;
+            margin-bottom: 0.6rem;
+        }
+
+        .scene-card p {
+            font-size: 0.96rem;
+            line-height: 1.6;
+            color: #4f3a2a;
+        }
+
+        .scene-card .scene-link {
+            display: inline-block;
+            margin-top: 1rem;
+            background: #f1ddd0;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: #3f281c;
+            transition: 0.2s;
+        }
+
+        .scene-card .scene-link:hover {
+            background: #e2caba;
+        }
+
+        /* 常见说明 (faq 风格) */
+        .faq-section {
+            margin-top: 1.8rem;
+        }
+
+        .faq-section h2 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #3f281c;
+            margin-bottom: 1.4rem;
+            padding-left: 0.2rem;
+        }
+
+        .faq-item {
+            background: #fffbf7;
+            border-radius: 24px;
+            padding: 1.2rem 1.6rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 3px 10px rgba(100, 60, 30, 0.04);
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            color: #3f2a1c;
+            margin-bottom: 0.3rem;
+            font-size: 1.05rem;
+        }
+
+        .faq-item p {
+            color: #4c3628;
+            line-height: 1.6;
+            font-size: 0.98rem;
+        }
+
+        .faq-item .faq-link {
+            color: #7b5a42;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            font-weight: 500;
+        }
+
+        .faq-item .faq-link:hover {
+            color: #3f281c;
+        }
+
+        /* 底部 */
+        .footer-note {
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #6b4d38;
+            border-top: 1px solid rgba(130, 80, 45, 0.15);
+            padding-top: 1.8rem;
+            letter-spacing: 0.3px;
+        }
+
+        .footer-note a {
+            color: #5f3e2c;
+            text-decoration: underline wavy rgba(130, 80, 45, 0.2);
+            text-underline-offset: 4px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 800px) {
+            .page-wrap {
+                padding: 1.5rem 1rem 2rem;
+                border-radius: 32px;
+            }
+
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+
+            .scenes-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 1.2rem;
+            }
+
+            .intro-card {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 540px) {
+            .top-nav {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.6rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .scenes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+    <!-- 导航 -->
+    <nav class="top-nav">
+        <span class="nav-brand">📋 bszb 索引</span>
+        <div class="nav-links">
+            <a href="#intro">介绍</a>
+            <a href="#scenes">场景</a>
+            <a href="#faq">说明</a>
+        </div>
+    </nav>
+
+    <!-- hero -->
+    <div class="hero">
+        <h1>资料整理 · 信息索引</h1>
+        <p>从零散的文件到有结构的脉络，<a href="https://zh-bszb.com" class="inline-link">bszb</a> 帮你把资料按逻辑串起来。不是简单的归类，而是让每一条内容都有位置、有上下文。</p>
+    </div>
+
+    <!-- 核心介绍 -->
+    <div class="intro-card" id="intro">
+        <h2>📌 为什么要做索引</h2>
+        <p>日常接触的信息越来越多——剪报、收藏夹、笔记、截图……东西多了就容易堆在一起，想用的时候反而找不到。bszb 的思路是：先整理，再索引，不追求大而全，而是让每份资料能被自然地定位和引用。</p>
+        <p>你可以把它看作一个轻量的信息目录，适合那些需要反复查阅、对比的材料。不管是个人知识库还是团队协作的参考池，索引本身就能节省很多翻找的时间。</p>
+        <div class="tag-group">
+            <span>📁 分类梳理</span>
+            <span>🔗 交叉引用</span>
+            <span>📝 备注摘要</span>
+            <span>🔄 版本锚点</span>
+        </div>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <h2 style="font-weight:500; color:#3f281c; margin:0.6rem 0 0.2rem; font-size:1.3rem;">🧩 适合这些场景</h2>
+    <div class="scenes-grid" id="scenes">
+        <div class="scene-card">
+            <span class="emoji-label">📚</span>
+            <h3>研究素材汇整</h3>
+            <p>收集了一批论文、报告、网页存档，按主题和关键词建立索引，方便后续引用和交叉对比，不用每次重新翻文件夹。</p>
+            <a href="https://zh-bszb.com" class="scene-link">bszb</a>
+        </div>
+        <div class="scene-card">
+            <span class="emoji-label">🗂️</span>
+            <h3>项目文档导航</h3>
+            <p>当项目积累了多轮文档、会议记录、设计稿，一份索引能让人快速定位到最新版本和相关讨论，减少重复沟通。</p>
+            <a href="https://zh-bszb.com" class="scene-link">bszb</a>
+        </div>
+        <div class="scene-card">
+            <span class="emoji-label">🧰</span>
+            <h3>个人知识库</h3>
+            <p>读书笔记、课程摘要、经验记录……用索引的方式组织起来，既保留原始内容，又能在需要时快速调出相关条目。</p>
+            <a href="https://zh-bszb.com" class="scene-link">bszb</a>
+        </div>
+    </div>
+
+    <!-- 常见说明 (faq 风格) -->
+    <div class="faq-section" id="faq">
+        <h2>❓ 常见说明</h2>
+
+        <div class="faq-item">
+            <strong>这个索引和普通文件夹有什么区别？</strong>
+            <p>文件夹侧重存放位置，而索引侧重条目之间的关系。比如同一份资料可以出现在多个索引分支里，不需要复制文件。更接近图书馆的目录卡片思路。</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>需要自己动手整理吗？</strong>
+            <p>是的。索引本身不自动抓取内容，它需要你根据实际情况设定条目标题、标签和备注。但一旦搭好框架，后续维护和扩展就很自然。可以参考 <a href="https://zh-bszb.com" class="faq-link">bszb</a> 上的一些示例结构。</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>适合团队协作吗？</strong>
+            <p>适合。索引可以作为共享的参考起点，每个人都可以按照约定的标签和分类添加条目。不过权限和同步需要自己配合其他工具来管理。</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>信息量大了会不会乱？</strong>
+            <p>索引本身层级不宜过深，建议控制在三级以内。定期清理失效或冗余的条目，配合简短备注，就能保持清晰。bszb 上也有一些整理习惯可以参考。</p>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <div class="footer-note">
+        <a href="https://zh-bszb.com">bszb</a> · 资料整理与信息索引 · 保持轻量
+    </div>
+</div>
+</body>
+</html>
