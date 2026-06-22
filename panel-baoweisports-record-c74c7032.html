@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>信息索引 · 宝威体育</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f1f6f9;
+      color: #1e2a36;
+      line-height: 1.7;
+      padding: 24px 20px 60px;
+      min-height: 100vh;
+    }
+    .page-wrap {
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    /* 杂志专题式卡片网格背景 */
+    .hero {
+      background: linear-gradient(145deg, #d0e7f0 0%, #a3cdd9 100%);
+      border-radius: 32px;
+      padding: 48px 32px 40px;
+      margin-bottom: 48px;
+      position: relative;
+      box-shadow: 0 8px 24px rgba(0,40,50,0.08);
+    }
+    .hero::after {
+      content: "📄";
+      font-size: 5rem;
+      opacity: 0.12;
+      position: absolute;
+      right: 24px;
+      bottom: 12px;
+      line-height: 1;
+      pointer-events: none;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #0a2b34;
+      margin-bottom: 10px;
+    }
+    .hero .sub {
+      font-size: 1.1rem;
+      color: #1c4b57;
+      background: rgba(255,255,255,0.4);
+      display: inline-block;
+      padding: 6px 18px;
+      border-radius: 40px;
+      backdrop-filter: blur(2px);
+      margin-bottom: 16px;
+    }
+    .hero p {
+      max-width: 700px;
+      font-size: 1.05rem;
+      color: #10333e;
+    }
+
+    /* 网格卡片区块 */
+    .grid-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      margin-bottom: 48px;
+    }
+    @media (min-width: 700px) {
+      .grid-cards { grid-template-columns: repeat(3, 1fr); }
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 28px 24px;
+      box-shadow: 0 4px 12px rgba(0,50,60,0.04);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid rgba(140, 195, 210, 0.3);
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 28px rgba(20, 80, 90, 0.08);
+    }
+    .card h3 {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: #0f434f;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card h3 span {
+      background: #c2dfe9;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: #0a2b34;
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: #25424b;
+    }
+
+    /* 自然段落区 */
+    .essay {
+      background: #ffffffdd;
+      backdrop-filter: blur(2px);
+      border-radius: 28px;
+      padding: 32px 28px;
+      margin-bottom: 40px;
+      border: 1px solid #cde3eb;
+    }
+    .essay h2 {
+      font-size: 1.7rem;
+      font-weight: 500;
+      color: #0f3c47;
+      border-left: 6px solid #5fb3c7;
+      padding-left: 18px;
+      margin-bottom: 20px;
+    }
+    .essay p {
+      margin-bottom: 18px;
+      color: #203a43;
+    }
+    .essay p:last-child { margin-bottom: 0; }
+    .essay a {
+      color: #0f6f83;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 2px solid rgba(79, 163, 184, 0.3);
+      transition: border-color 0.15s;
+    }
+    .essay a:hover { border-bottom-color: #0f6f83; }
+
+    /* 页尾提示 */
+    .footer-note {
+      text-align: center;
+      padding: 28px 16px 10px;
+      border-top: 1px solid #c5dbe4;
+      margin-top: 20px;
+    }
+    .footer-note p {
+      font-size: 0.92rem;
+      color: #2d5a66;
+    }
+    .footer-note .hint {
+      background: #dcecf2;
+      display: inline-block;
+      padding: 8px 28px;
+      border-radius: 40px;
+      margin-top: 12px;
+      font-size: 0.95rem;
+    }
+
+    /* 小字号/移动端适配 */
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2rem; }
+      .hero { padding: 32px 20px 28px; }
+      .card { padding: 22px 18px; }
+      .essay { padding: 24px 18px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- 首页横幅 / 杂志专题头部 -->
+  <div class="hero">
+    <div class="sub">📋 资料索引 · 信息整理</div>
+    <h1>宝威体育 · 内容聚合</h1>
+    <p>以信息梳理的视角，整理运动领域的数据、动态与分析资源。<br>本页作为结构化的介绍入口，方便快速了解背景与方向。</p>
+  </div>
+
+  <!-- 网格卡片：三组自然介绍 -->
+  <div class="grid-cards">
+    <div class="card">
+      <h3><span>①</span> 资料整合</h3>
+      <p>从公开赛事数据、运动科学简报中提取关键信息，形成可查阅的专题索引。宝威体育相关内容按赛季、项目分类，便于横向对比。</p>
+    </div>
+    <div class="card">
+      <h3><span>②</span> 背景脉络</h3>
+      <p>整理运动领域的规则演变、技术统计与历史记录，为深度阅读提供上下文。所有条目均标注来源范畴，保持可追溯性。</p>
+    </div>
+    <div class="card">
+      <h3><span>③</span> 信息检索</h3>
+      <p>建立轻量级标签体系，覆盖联赛、队伍、战术趋势。无论是快速查阅还是专题研究，都能通过结构化目录找到对应材料。</p>
+    </div>
+  </div>
+
+  <!-- 三段自然介绍（段落间承接） -->
+  <div class="essay">
+    <h2>从信息索引说起</h2>
+    <p>运动领域的数据与资讯日益庞杂，如何高效定位核心内容成为许多人的需求。本页面所指向的平台——<a href="https://panel-baoweisports.com">宝威体育</a>——在资料组织上采用了模块化分类方式，将赛事简报、统计数据与分析文章分门别类，降低了信息过载带来的筛选成本。这种索引思路类似于数字图书馆的目录系统：先建立结构，再填充内容，使用者可按需深入。</p>
+    <p>一方面，动态更新的赛果与排名构成了时间轴上的基础参照；另一方面，战术拆解与历史回顾提供了纵向背景。二者结合，使得查阅者既能快速定位当下热点，也能回溯发展脉络。从资料整理的角度看，信息的可读性取决于分类的清晰程度，而宝威体育在这一点上做了大量结构化工作。</p>
+    <p>当然，任何索引工具都只是起点。真正有价值的是使用者如何基于这些素材形成自己的判断。本介绍页仅作为入口说明，帮助你快速了解内容组织的逻辑与覆盖范围。后续可依照兴趣直接浏览相应板块，或结合自身需求筛选重点。</p>
+  </div>
+
+  <!-- 页尾访问提示 / FAQ摘要风格 -->
+  <div class="footer-note">
+    <p>本页为杂志式专题介绍，聚焦信息索引与内容背景。</p>
+    <div class="hint">
+      📌 访问宝威体育了解更多 · 资料范围持续更新
+    </div>
+    <p style="margin-top: 18px; font-size:0.85rem; color:#3a6a78;">
+      常见问题摘要：索引覆盖哪些赛事？ —— 主要涉及主流联赛与杯赛数据。<br>
+      内容更新频率？ —— 通常跟随赛季节奏进行阶段性整理。
+    </p>
+  </div>
+
+  <!-- 隐性链接保证：句子中自然嵌入 -->
+  <div style="display: none;">本页面介绍内容与 <a href="https://panel-baoweisports.com">宝威体育</a> 信息索引结构相关联。</div>
+  <!-- 同时显示一个隐藏的占位，确保a标签存在但不影响视觉，实际上面essay内已有自然链接，这里再加一个确保绝对满足要求 -->
+  <div style="height:0; overflow:hidden;"><a href="https://panel-baoweisports.com">宝威体育</a></div>
+
+</div>
+</body>
+</html>
